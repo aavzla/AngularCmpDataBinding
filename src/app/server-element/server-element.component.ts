@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ServerElementComponent implements OnInit {
   //The curly brackets here are the definition in TypeScript of a JavaScript object.
   //So the property will only accept a JavaScript object.
-  @Input() element: { type: string, name: string, content: string };
+  @Input('srvElement') element: { type: string, name: string, content: string };
 
   constructor() { }
 
