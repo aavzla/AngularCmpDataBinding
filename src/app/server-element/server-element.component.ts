@@ -11,7 +11,8 @@ import {
   AfterViewChecked,
   OnDestroy,
   ViewChild,
-  ElementRef
+  ElementRef,
+  ContentChild
 } from '@angular/core';
 
 @Component({
@@ -39,7 +40,8 @@ export class ServerElementComponent implements
   //the modification will be made, but Angular will not detect the change.
   //Why? Because this property and the array element will have the same pointer in memory and it will not change the pointer like in a primitive change.
   @Input() name: string;
-  @ViewChild('heading', {static: true}) header: ElementRef
+  @ViewChild('heading', { static: true }) header: ElementRef
+  @ContentChild('contentParagraph', { static: true }) paragraph: ElementRef
 
   constructor() {
     console.log(this.constructor.name + ' constructor called!');
@@ -54,6 +56,8 @@ export class ServerElementComponent implements
     console.log(this.constructor.name + ' ngOnInit called!');
     console.log(this.constructor.name + ' the header property has the text as below');
     console.log("Text Content: " + this.header.nativeElement.textContent);
+    console.log(this.constructor.name + ' the paragraph property has the text as below');
+    console.log("Text Content of paragraph: " + this.paragraph.nativeElement.textContent);
   }
 
   ngDoCheck() {
@@ -72,6 +76,8 @@ export class ServerElementComponent implements
     console.log(this.constructor.name + ' ngAfterViewInit called!');
     console.log(this.constructor.name + ' the header property has the text as below');
     console.log("Text Content: " + this.header.nativeElement.textContent);
+    console.log(this.constructor.name + ' the paragraph property has the text as below');
+    console.log("Text Content of paragraph: " + this.paragraph.nativeElement.textContent);
   }
 
   ngAfterViewChecked() {
